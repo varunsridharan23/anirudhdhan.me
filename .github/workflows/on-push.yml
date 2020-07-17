@@ -1,0 +1,21 @@
+name: On Push
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Dynamic_Links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📩 Fetching Repository
+        uses: actions/checkout@v2
+      - name: 💽 Installing PHP
+        uses: nanasess/setup-php@master
+        with:
+          php-version: '7.2'
+      - name: ⚒️ Generating Site
+        run: sh .github/entrypoint.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
