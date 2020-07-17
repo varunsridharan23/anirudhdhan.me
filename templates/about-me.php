@@ -1,5 +1,5 @@
 <div class="jumbotron bg-white" style="margin: 10% auto 20% auto;">
-	<img src="img/profile-pic.jpg" class="mx-auto d-block" height="150" width="150" alt="Anirudhdhan">
+	<img src="assets/img/profile-pic.jpg" class="mx-auto d-block" height="150" width="150" alt="Anirudhdhan">
 	<h1 class="text-center mt-3">Anirudhdhan</h1>
 	<p class="lead text-muted text-center">Cricket Player, Visual Editor & Dog Lover</p>
 	<p class="text-center">I have played professional cricket in the under-16 group in TNCA.
@@ -8,17 +8,17 @@
 	</p>
 	<div class="text-center">
 		<a class="btn btn-outline-light btn-sm text-secondary d-md-inline-block d-sm-block mx-2" href="#cricket">
-			<img src="img/cricket-icon.png" style="height:20px; margin-top:-5px;"> Cricket
+			<img src="assets/img/cricket-icon.png" style="height:20px; margin-top:-5px;"> Cricket
 		</a>
 		<a class="btn btn-outline-light btn-sm text-secondary d-md-inline-block d-sm-block mx-2" href="#gymnastics">
-			<img src="img/gymnastics-icon.png" style="height:20px;"> Gymnastics
+			<img src="assets/img/gymnastics-icon.png" style="height:20px;"> Gymnastics
 		</a>
 		<a class="btn btn-outline-light btn-sm text-secondary d-md-inline-block d-sm-block mx-2"
 		   href="#visualediting">
-			<img src="img/visual-editing.png" style="height:20px; margin-top:-7px;"> Visual Editing
+			<img src="assets/img/visual-editing.png" style="height:20px; margin-top:-7px;"> Visual Editing
 		</a>
 		<a class="btn btn-outline-light btn-sm text-secondary d-md-inline-block d-sm-block mx-2" href="#pets">
-			<img src="img/dog.png" style="height:15px;"> Pets
+			<img src="assets/img/dog.png" style="height:15px;"> Pets
 		</a>
 	</div>
 </div>

@@ -10,7 +10,7 @@ require_once __DIR__.'/templates/menu.php';
                 the under-16 group in TNCA.</p>
             <div class="card-columns cricket pt-3">
 				<?php
-				$dir = 'img/cricket/';
+				$dir = 'assets/img/cricket/';
 				if ( $dh = opendir( $dir ) ) {
 					while ( ( $file = readdir( $dh ) ) !== false ) {
 						if ( $file != '.' && $file != '..' ) {
@@ -36,7 +36,7 @@ IMG;
                 the under-16 group in TNCA.</p>
             <div class="card-columns gymnastics pt-3">
 				<?php
-				$dir = 'img/gymnastics/';
+				$dir = 'assets/img/gymnastics/';
 				if ( $dh = opendir( $dir ) ) {
 					while ( ( $file = readdir( $dh ) ) !== false ) {
 						if ( $file != '.' && $file != '..' ) {

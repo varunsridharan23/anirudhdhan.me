@@ -6,16 +6,44 @@ on:
       - master
 
 jobs:
-  Dynamic_Links:
+  Update_GH_Pages:
     runs-on: ubuntu-latest
     steps:
-      - name: 📩 Fetching Repository
+      - name: Fetching Repository
         uses: actions/checkout@v2
-      - name: 💽 Installing PHP
+      - name: Generating HTML
         uses: nanasess/setup-php@master
         with:
-          php-version: '7.2'
-      - name: ⚒️ Generating Site
-        run: sh .github/entrypoint.sh
+          php-version: '7.3'
+      - run: php generator.php $GITHUB_SHA
+      - run: |
+          cd ../
+          git config --global user.email "githubactionbot@gmail.com" && git config --global user.name "Github Action Bot"
+          PUSH_TO_BRANCH="gh-pages"
+          if [ -z "$(git ls-remote --heads https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ${PUSH_TO_BRANCH})" ]; then
+            git clone --quiet https://x-access-token:$GITHUB_TOKEN@github.com/${GITHUB_REPOSITORY}.git $PUSH_TO_BRANCH >/dev/null
+            cd $PUSH_TO_BRANCH
+            git checkout --orphan $PUSH_TO_BRANCH >/dev/null
+            git rm -rf . >/dev/null
+            echo "$GITHUB_REPOSITORY" >README.md
+            git add README.md
+            git commit -a -m "➕ Create $PUSH_TO_BRANCH Branch"
+            git push origin $PUSH_TO_BRANCH
+            cd ..
+            echo "🗃 $PUSH_TO_BRANCH Created"
+          else
+            echo "👌 $PUSH_TO_BRANCH Clone Log"
+            git clone --quiet --branch=$PUSH_TO_BRANCH https://x-access-token:$GITHUB_TOKEN@github.com/${GITHUB_REPOSITORY}.git $PUSH_TO_BRANCH
+          fi
+          cp -r $GITHUB_WORKSPACE/output/* $PUSH_TO_BRANCH/
+          cd $PUSH_TO_BRANCH/
+          if [ "$(git status --porcelain)" != "" ]; then
+            echo "👌 Website Published"
+            git add .
+            git commit -m "📖 #$GITHUB_RUN_NUMBER - Website Regenerated / ⚡ Triggered By $GITHUB_SHA"
+            git push origin $PUSH_TO_BRANCH
+          else
+            echo "✅ Nothing To Push"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
