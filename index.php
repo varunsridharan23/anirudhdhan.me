@@ -3,8 +3,6 @@ require_once __DIR__.'/templates/header.php';
 require_once __DIR__.'/templates/menu.php';
 ?>
 
-
-
     <div data-spy="scroll" class="text-center" data-offset="0">
         <div id="cricket" class="border-top">
             <h1 class="pt-5"><img src="img/cricket-icon.png" style="height:40px;"> Cricket</h1>
